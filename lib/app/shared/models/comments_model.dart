@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-class Comments {
+class CommentsModel {
  int postId;
  int id;
  String name;
  String email;
  String body; 
-  Comments({
+  CommentsModel({
     required this.postId,
     required this.id,
     required this.name,
@@ -14,14 +14,14 @@ class Comments {
     required this.body,
   });
 
-  Comments copyWith({
+  CommentsModel copyWith({
     int? postId,
     int? id,
     String? name,
     String? email,
     String? body,
   }) {
-    return Comments(
+    return CommentsModel(
       postId: postId ?? this.postId,
       id: id ?? this.id,
       name: name ?? this.name,
@@ -40,8 +40,8 @@ class Comments {
     };
   }
 
-  factory Comments.fromMap(Map<String, dynamic> map) {
-    return Comments(
+  factory CommentsModel.fromMap(Map<String, dynamic> map) {
+    return CommentsModel(
       postId: map['postId'],
       id: map['id'],
       name: map['name'],
@@ -52,18 +52,18 @@ class Comments {
 
   String toJson() => json.encode(toMap());
 
-  factory Comments.fromJson(String source) => Comments.fromMap(json.decode(source));
+  factory CommentsModel.fromJson(String source) => CommentsModel.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'Comments(postId: $postId, id: $id, name: $name, email: $email, body: $body)';
+    return 'CommentsModel(postId: $postId, id: $id, name: $name, email: $email, body: $body)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
   
-    return other is Comments &&
+    return other is CommentsModel &&
       other.postId == postId &&
       other.id == id &&
       other.name == name &&

@@ -9,18 +9,18 @@ part of 'comments_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CommentsStore on _CommentsStoreBase, Store {
-  final _$valueAtom = Atom(name: '_CommentsStoreBase.value');
+  final _$isLoadingAtom = Atom(name: '_CommentsStoreBase.isLoading');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
     });
   }
 
@@ -28,11 +28,11 @@ mixin _$CommentsStore on _CommentsStoreBase, Store {
       ActionController(name: '_CommentsStoreBase');
 
   @override
-  void increment() {
+  void setLoading(bool value) {
     final _$actionInfo = _$_CommentsStoreBaseActionController.startAction(
-        name: '_CommentsStoreBase.increment');
+        name: '_CommentsStoreBase.setLoading');
     try {
-      return super.increment();
+      return super.setLoading(value);
     } finally {
       _$_CommentsStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +41,7 @@ mixin _$CommentsStore on _CommentsStoreBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+isLoading: ${isLoading}
     ''';
   }
 }
