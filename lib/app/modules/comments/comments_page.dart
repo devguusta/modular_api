@@ -33,7 +33,7 @@ class CommentsPageState extends ModularState<CommentsPage,CommentsStore> {
              future: store.getComments(),
              builder:(context,snapshot){
               
-               print(snapshot.data);
+              //  print(snapshot.data);
                if(!snapshot.hasData){
                   return Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
@@ -42,20 +42,22 @@ class CommentsPageState extends ModularState<CommentsPage,CommentsStore> {
                final list = snapshot.data ?? [];
                return list.length > 0 ? 
                Container(
-                 child: Column(
-                   children: [
-                     ListView.builder(
-                       physics: NeverScrollableScrollPhysics(),
-                       shrinkWrap: true,
-                       primary: false,
-                       itemCount: 50,
-                     itemBuilder: (_,index) => ListTile(
-                       title: Text(list[index]!.email),
-                       subtitle: Text(list[index]!.name),
-                     ),
-                       
+                 child: SingleChildScrollView(
+                   child: Column(
+                     children: [
+                       ListView.builder(
+                         physics: NeverScrollableScrollPhysics(),
+                         shrinkWrap: true,
+                         primary: false,
+                         itemCount: 5,
+                       itemBuilder: (_,index) => ListTile(
+                         title: Text(list[index]!.email),
+                         subtitle: Text(list[index]!.name),
                        ),
-                   ],
+                         
+                         ),
+                     ],
+                   ),
                  ),
                ) : Center(child: Text("Não há transações no momento"));
              } else {

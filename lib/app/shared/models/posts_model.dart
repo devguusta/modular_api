@@ -1,24 +1,24 @@
 import 'dart:convert';
 
-class Posts {
+class PostsModel {
   int userId;
   int id;
   String title;
   String body;
-  Posts({
+  PostsModel({
     required this.userId,
     required this.id,
     required this.title,
     required this.body,
   });
 
-  Posts copyWith({
+  PostsModel copyWith({
     int? userId,
     int? id,
     String? title,
     String? body,
   }) {
-    return Posts(
+    return PostsModel(
       userId: userId ?? this.userId,
       id: id ?? this.id,
       title: title ?? this.title,
@@ -35,8 +35,8 @@ class Posts {
     };
   }
 
-  factory Posts.fromMap(Map<String, dynamic> map) {
-    return Posts(
+  factory PostsModel.fromMap(Map<String, dynamic> map) {
+    return PostsModel(
       userId: map['userId'],
       id: map['id'],
       title: map['title'],
@@ -46,18 +46,18 @@ class Posts {
 
   String toJson() => json.encode(toMap());
 
-  factory Posts.fromJson(String source) => Posts.fromMap(json.decode(source));
+  factory PostsModel.fromJson(String source) => PostsModel.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'Posts(userId: $userId, id: $id, title: $title, body: $body)';
+    return 'PostsModel(userId: $userId, id: $id, title: $title, body: $body)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
   
-    return other is Posts &&
+    return other is PostsModel &&
       other.userId == userId &&
       other.id == id &&
       other.title == title &&

@@ -9,18 +9,18 @@ part of 'posts_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$PostsStore on _PostsStoreBase, Store {
-  final _$valueAtom = Atom(name: '_PostsStoreBase.value');
+  final _$isLoadingAtom = Atom(name: '_PostsStoreBase.isLoading');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
     });
   }
 
@@ -28,11 +28,11 @@ mixin _$PostsStore on _PostsStoreBase, Store {
       ActionController(name: '_PostsStoreBase');
 
   @override
-  void increment() {
+  void setLoading(bool value) {
     final _$actionInfo = _$_PostsStoreBaseActionController.startAction(
-        name: '_PostsStoreBase.increment');
+        name: '_PostsStoreBase.setLoading');
     try {
-      return super.increment();
+      return super.setLoading(value);
     } finally {
       _$_PostsStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +41,7 @@ mixin _$PostsStore on _PostsStoreBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+isLoading: ${isLoading}
     ''';
   }
 }
